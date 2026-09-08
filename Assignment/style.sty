@@ -7,7 +7,7 @@
 % Global page style settings
 % --------------------------
 \usepackage{cite} % Bibliography support
-\usepackage[mono,vvarbb,upint]{notomath} % Font
+\usepackage{libertinus, libertinust1math}  % Font
 \let\openbox\undefined
 \let\Bbbk\undefined
 \usepackage{sectsty} % Control sectional headers
@@ -29,9 +29,10 @@
 }
 
 \usepackage{geometry} % Customize page layout and dimensions
+\usepackage{tabto} % Permits to write in the margin
 \usepackage{fancyhdr} % Extensive control of page headers and footers
 \usepackage{enumerate}
-\usepackage{enumitem} % provides user control over the layout of environments: enumerate, itemize and description
+\usepackage{enumitem} % Provides user control over the layout of environments: enumerate, itemize and description
 \usepackage{titlesec} % Select alternative section titles
 \usepackage{blindtext} % Generate dummy text to test template
 \usepackage{duckuments} % Generate dummy text & equations.
@@ -72,32 +73,25 @@
 % ---------------
 % Page dimensions
 % ---------------
-\geometry{left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm}
-\setlength{\headheight}{16pt}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+\setlength{\headheight}{18pt}
 \setlength\parindent{0pt} % No indentation
 
 % ----------------------------------------------
 % Titles (sections, subsections, subsubsections)
 % ----------------------------------------------
-\titleformat{\subsection}{
-  \normalfont\large\bfseries{
-    \color{\MasterColor}\titlerule[1pt]
+\titleformat{\section}{
+  \centering
+  \normalfont\Large\bfseries{
+    \color{\MasterColor}
     }
-  \vspace{0.25cm}
-}{\thesubsection}{1em}{}
-
-\titleformat{\subsubsection}{
-  \normalfont\large\bfseries{
-    \color{\MasterColor}\titlerule[0.5pt]
-    }
-  \vspace{0.25cm}
-}{\thesubsubsection}{1em}{}
+}{\thesection}{1em}{}
 
 % -----------------
 % Headers & Footers
 % -----------------
 \pagestyle{fancy}
-\lhead{\color{\MasterColor}\textit{\NomCours, \CodeCours}}
+\lhead{\color{\MasterColor}\textit{\Activite}}
 \rhead{\color{\MasterColor}\textit{\Titre}}
 \renewcommand{\headrulewidth}{0pt}
 
@@ -106,11 +100,10 @@
 % --------------------------------------
 \newcommand{\CoequipierA}[1]{\renewcommand{\CoequipierA}{#1}}
 \newcommand{\CoequipierB}[1]{\renewcommand{\CoequipierB}{#1}}
-\newcommand{\CoequipierC}[1]{\renewcommand{\CoequipierC}{#1}}
 \newcommand{\Titre}[1]{\renewcommand{\Titre}{#1}}
 \newcommand{\SousTitre}[1]{\renewcommand{\SousTitre}{#1}}
-\newcommand{\NomCours}[1]{\renewcommand{\NomCours}{#1}}
-\newcommand{\CodeCours}[1]{\renewcommand{\CodeCours}{#1}}
+\newcommand{\Activite}[1]{\renewcommand{\Activite}{#1}}
+\newcommand{\Lieu}[1]{\renewcommand{\Lieu}{#1}}
 \newcommand{\Enseignant}[1]{\renewcommand{\Enseignant}{#1}}
 \newcommand{\Faculte}[1]{\renewcommand{\Faculte}{#1}}
 \newcommand{\Departement}[1]{\renewcommand{\Departement}{#1}}

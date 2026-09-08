@@ -2,8 +2,13 @@
 *.sh
 PKGBUILD
 
-## MacOS metadata
-*.DS_Store
+# General MacOS stuff
+.DS_Store
+.localized
+__MACOSX/
+.AppleDouble
+.LSOverride
+Icon[]
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
