@@ -1,3 +1,8 @@
+% -----------------
+% Document settings
+% -----------------
+\usepackage{subfiles}
+
 % --------------------
 % Color theme settings
 % --------------------
@@ -30,7 +35,7 @@
 % -------------
 \setbeamerfont{framesubtitle}{size=\small}
 \usefonttheme{serif} % default family is serif
-\usepackage[mono,vvarbb,upint]{notomath} % Font
+\usepackage{libertinus, libertinust1math}  % Font
 
 % ------------
 % TOC settings
@@ -56,9 +61,9 @@
 % Frame number
 \addtobeamertemplate{navigation symbols}{}{
     \usebeamerfont{footline}
-    \usebeamercolor[vibrant_green]{footline}
+    \usebeamercolor[pastel_green]{footline}
     \hspace{1em}
-    \insertframenumber/\inserttotalframenumber
+    \textbf{\insertframenumber/\inserttotalframenumber}
 }
 
 % ------------------------
@@ -71,24 +76,25 @@
 % Custom colors
 \definecolor{pastel_green}{RGB}{195, 215, 205}
 \definecolor{vibrant_green}{RGB}{30, 150, 110}
+
 \definecolor{pastel_brown}{RGB}{202, 184, 166}
 \definecolor{lila_links}{RGB}{102, 122, 162}
 
 % Custom tcolorbox
 \newtcolorbox{mygreenbox}{
-  colback=pastel_green!10,     % Background color (lighter colframe)
-  colframe=pastel_green,       % Frame color
+  colback=pastel_green!20,    % Background color (lighter colframe)
+  colframe=white,              % Frame color
   sharp corners,               % Sharp edges
   boxrule=0.6mm,               % Thickness of the box frame
   width=\linewidth,            % Box width
 }
 
 \newtcolorbox{mybrownbox}{
-  colback=pastel_brown!10,      % Background color (lighter colframe)
-  colframe=pastel_brown,        % Frame color
-  sharp corners,                % Sharp edges
-  boxrule=0.6mm,                % Thickness of the box frame
-  width=\linewidth,             % Box width
+  colback=pastel_brown!20,      % Background color (lighter colframe)
+  colframe=white,              % Frame color
+  sharp corners,               % Sharp edges
+  boxrule=0.6mm,               % Thickness of the box frame
+  width=\linewidth,            % Box width
 }
 
 % Custom math tcolorbox

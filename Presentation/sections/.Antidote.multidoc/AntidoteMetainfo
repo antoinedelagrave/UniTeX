@@ -1,0 +1,17 @@
+
+{
+    "balisage": null,
+    "encodage": {
+        "biblio.tex": 0,
+        "context.tex": 0,
+        "graphsfigs.tex": 0,
+        "personnalisation.tex": 0,
+        "physicsmaths.tex": 0,
+        "sty.tex": 0,
+        "tipsandtricks.tex": 0
+    },
+    "filtreDocuments": {
+        "chainesExclues": "",
+        "exclureTypesDocumentsInconnus": true
+    }
+}

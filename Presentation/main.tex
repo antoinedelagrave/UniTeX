@@ -8,14 +8,15 @@
 
 \institute[]{
     Introduction à \LaTeX{} \\
-    Département de Physique \\
+    Département de Physique \& Institut Quantique \\
+    Université de Sherbrooke \\
     \today
 }
 
 \titlegraphic{
-    \includegraphics[width=4cm]{./figures/logos/UdeS_logo_h_noirHR.png}
-    \hspace{1cm}
-    \includegraphics[width=3cm]{./figures/logos/h-UQTR-nb.png}
+    \includegraphics[width=4cm]{./figures/logos/UdeS_logo_h_rgbHR.png}
+    \hspace{0.5cm}
+    \includegraphics[width=4.75cm]{./figures/logos/IQ_logo_h_hr.png}
 }
 
 \date[\today]
@@ -26,21 +27,23 @@
 
     \frame{\titlepage}
 
-    \input{sections/context}
+    \subfile{sections/context}
 
     \begin{frame}
         \frametitle{Table des matières}
         \tableofcontents
     \end{frame}
 
-    \input{sections/personnalisation}
+    \subfile{sections/personnalisation}
 
-    \input{sections/physicsmaths}
+    \subfile{sections/physicsmaths}
 
-    \input{sections/biblio}
+    \subfile{sections/biblio}
 
-    \input{sections/graphsfigs}
+    \subfile{sections/graphsfigs}
 
-    \input{sections/tipsandtricks}
+    \subfile{sections/sty.tex}
+
+    \subfile{sections/tipsandtricks}
 
 \end{document}

@@ -16,36 +16,36 @@
 
 \begin{frame}
     \frametitle{Bibliographie, citations et références}
-    La gestion de la bibliographie et des citations peut se faire avec \textcolor{vibrant_green}{\textit{biblatex}}\footnotemark. Il y a 4 étapes essentielles
+    La gestion de la bibliographie et des citations peut se faire avec \textcolor{vibrant_green}{\textit{biblatex}}\footnotemark. Il y a quatre étapes essentielles
     \vspace{0.3cm}
     \begin{itemize}
     \pause
-        \item[$1.$] Importer le module et personnaliser le style
+        \item[$1.$] Importer le module et personnaliser le style.
             \pause
-        \item[$2.$] Créer un fichier .bib et l'ajouter comme référence
+        \item[$2.$] Créer un fichier .bib et l'ajouter comme référence.
             \pause
-        \item[$3.$] Citer grâce à la commande \texttt{cite\{\dots\}}
+        \item[$3.$] Citer dans le texte avec la commande~: \texttt{$\backslash$cite\{\dots\}}
             \pause
-        \item[$4.$] Insérer la bibliographie
+        \item[$4.$] Insérer la bibliographie.
     \end{itemize}
     \footnotetext{Bib\LaTeX – Sophisticated Bibliographies in \LaTeX. \href{https://ctan.org/pkg/biblatex}{\textcolor{vibrant_green}{https://ctan.org/pkg/biblatex}}.}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Bibliographie, citations et références}
-    \underline{Étape 1}:
+    \underline{1. Importer le module et personnaliser le style}:
     \begin{lstlisting}[xleftmargin=-1.5cm, basicstyle=\small]
         \usepackage[backend=biber,style=phys]{biblatex}
     \end{lstlisting}
     \vfill
     \pause
-    \underline{Étape 2}:
+    \underline{2. Créer un fichier .bib et l'ajouter comme référence}:
     \begin{lstlisting}[xleftmargin=-1.5cm, basicstyle=\small]
         \addbibresource{references.bib}
     \end{lstlisting}
     \begin{columns}
         \column{0.5\linewidth}
-        \begin{lstlisting}[xleftmargin=-1cm, basicstyle=\footnotesize]
+        \begin{lstlisting}[xleftmargin=-1.5cm, basicstyle=\tiny]
             @article{Einstein1905,
               author  = {Albert Einstein},
               title   = {Some title},
@@ -57,7 +57,7 @@
               doi     = {10.1002/andp.19053221004}}
         \end{lstlisting}
         \column{0.5\linewidth}
-        \begin{lstlisting}[xleftmargin=-1cm, basicstyle=\footnotesize]
+        \begin{lstlisting}[xleftmargin=-1.5cm, basicstyle=\tiny]
             @misc{Doe2021,
               author    = {John Doe and Jane Smith},
               title     = {Some title},
@@ -72,12 +72,23 @@
 
 \begin{frame}[fragile]
     \frametitle{Bibliographie, citations et références}
-    \underline{Étapes 3 et 4}:
+    \underline{3. Citer dans le texte avec la commande~: \texttt{$\backslash$cite\{\dots\}}}:
     \vfill
     \begin{lstlisting}[xleftmargin=-1cm, basicstyle=\small]
        \begin{document}
 
-        According to \textcite{Einstein1905} ...
+        According to \cite{Einstein1905} ...
+
+        \end{document}
+    \end{lstlisting}
+    \pause
+    \vfill
+    \underline{4. Insérer la bibliographie}:
+    \vfill
+    \begin{lstlisting}[xleftmargin=-1cm, basicstyle=\small]
+       \begin{document}
+
+        According to \cite{Einstein1905} ...
 
         \printbibliography
 
@@ -96,7 +107,7 @@
     \end{figure}
     \vfill\pause
     \begin{mybrownbox}
-        \textbf{Note}~: Il est aussi possible de référencer des équations, tableaux et figures avec le module \textcolor{vibrant_green}{\textit{cleveref}}\footnotemark via la commande \texttt{cref\{...\}}.
+        \textbf{Note}~: Il est possible de référencer des équations, tableaux et figures avec le module \textcolor{vibrant_green}{\textit{cleveref}}\footnotemark via la commande \texttt{$\backslash$cref\{...\}}.
     \end{mybrownbox}
     \footnotetext{cleveref – Intelligent cross-referencing. \href{https://ctan.org/pkg/cleveref}{\textcolor{vibrant_green}{https://ctan.org/pkg/cleveref}}.}
 \end{frame}
