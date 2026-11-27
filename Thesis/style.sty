@@ -1,0 +1,219 @@
+% -----------------
+% Style & Libraries
+% -----------------
+\ProvidesPackage{style}[2026/11/26]
+
+% --------------------------
+% Global page style settings
+% --------------------------
+\usepackage[utf8]{inputenc} % Telling LaTeX what encoding is used
+\usepackage[T1]{fontenc} % Uses fonts that have 256 glyphs
+\usepackage{libertinus, libertinust1math} % Font
+% \usepackage[scaled=1,sups,lining]{XCharter} % Alternative font: comment the
+% \usepackage[charter,vvarbb,scaled=1.07]{newtxmath} % line above, uncomment these
+\let\openbox\undefined
+\let\Bbbk\undefined
+
+% Using 'subfiles', the user can compile each of the project's file
+% separately and those will automatically use 'main.tex' preamble.
+\usepackage{subfiles}
+
+\usepackage{geometry} % Customize page layout and dimensions
+\usepackage{setspace} % Keeps footnotes & floats single spaced under \baselinestretch
+\usepackage[sc,compact,explicit]{titlesec} % Select alternative section titles
+\usepackage{adjustbox} % Scales the chapter ornament (bee)
+\usepackage{enumerate} % Custom list labels
+\usepackage{enumitem} % Custom list spacing
+\setlist[itemize]{itemsep=5pt, parsep=0pt, topsep=5pt}
+
+% ----------------
+% Language support
+% ----------------
+\usepackage[english, french]{babel} % Using different languages
+\newcommand{\Language}[1]{\selectlanguage{#1}}
+\usepackage[babel=true,protrusion=true,spacing,tracking]{microtype} % Typographic refinements
+\usepackage[most]{tcolorbox} % Colored boxes support (after babel: loads 'listings')
+
+% --------------
+% Math & Physics
+% --------------
+\usepackage{bm} % Makes bold symbols in math env.
+\usepackage{array, makecell}
+\usepackage{empheq}
+\usepackage{physics}
+\let\circledS\undefined
+\usepackage{amsmath, amsfonts, amsthm, amssymb, dsfont}
+\usepackage{mathrsfs} % Script letters (ex: \mathscr{O} in \bigO)
+\usepackage{nicematrix}
+\usepackage[nice]{nicefrac} % Readable inline fractions
+\usepackage{bbm} % Extra bold fonts (ex: \mathbbm{1})
+\usepackage{esint} % Generalized integrals
+\usepackage{cancel} % Strike through math expressions
+\usepackage{mathtools} % Math formatting tools
+\usepackage{slashed} % Feynman slash notation
+\usepackage{xargs} % Optional arguments for commands
+
+% ------
+% Tables
+% ------
+\usepackage{booktabs} % Enhances the quality of tables
+\newcolumntype{C}{>{$\displaystyle}c<{$}} % Centered math column
+\newcolumntype{L}{>{$\displaystyle}l<{$}} % Left math column
+\newcolumntype{R}{>{$\displaystyle}r<{$}} % Right math column
+\usepackage{dcolumn} % Align on the decimal point
+
+% -------
+% Figures
+% -------
+\usepackage{graphicx} % Insert figures
+\usepackage{wrapfig} % Merge figures and text blocks
+\usepackage[margin=5mm,font=default,labelfont=bf,labelsep=default]{caption}
+\usepackage{subcaption} % Insert subcaptions in figure's caption
+\usepackage{listings} % Insert code blocks in .tex file
+\usepackage{pdfpages} % Insert external PDF documents (ex: published article)
+\usepackage{tikz}
+\usetikzlibrary{
+    calc,
+    patterns,
+    positioning,
+    shapes,
+    fit,
+    backgrounds,
+    arrows.meta,
+    decorations.pathmorphing,
+    decorations.markings,
+    shapes.geometric,
+    arrows,
+    svg.path % Draws the bee ornament from its SVG path
+}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+% ------------
+% Bibliography
+% ------------
+\usepackage{url} % URLs typography
+\usepackage{cite} % Bibliography support
+\bibliographystyle{nature-fr} % Use 'nature' for an english thesis
+
+% ---------------------------
+% Hyperlinks & PDF/A metadata
+% ---------------------------
+% Options must be passed before loading 'pdfx' (which loads 'hyperref').
+% Metadata (title, author, keywords) are read from 'main.xmpdata'.
+\PassOptionsToPackage{
+    backref=page,
+    pagebackref=true,
+    hyperindex=true,
+    bookmarks=true,
+    pdfa
+}{hyperref}
+\usepackage[a-2b,mathxmp]{pdfx}[2018/12/22]
+\newcommand{\SetRefColor}[1]{%
+  \hypersetup{%
+    colorlinks=true,
+    breaklinks=true,
+    urlcolor=#1,
+    linkcolor=#1,
+    citecolor=#1,
+    bookmarksopen=true
+    }%
+}
+
+% ---------------
+% Page dimensions
+% ---------------
+\geometry{letterpaper, lmargin=1in, rmargin=1in, tmargin=1.25in, bmargin=1.0in}
+\setlength{\parindent}{4ex} % Paragraph indentation
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex} % Space between paragraphs
+\renewcommand{\baselinestretch}{1.5} % Line spacing
+\setcounter{secnumdepth}{3}
+
+% --------------------------------------------------------
+% Titles (chapters, sections, subsections, subsubsections)
+% --------------------------------------------------------
+% Bee ornament read from the path of figs/bee.svg and filled with \MasterColor.
+% Limits: one path, one colour, 'd' on one line, 634 x 453 bp page (Inkscape
+% export of this bee); another SVG needs its own bounding box below.
+\ExplSyntaxOn
+\ior_new:N \g__thesis_svg_ior
+\tl_new:N \g__thesis_ornament_tl
+\cs_new_protected:Npn \thesis_load_svg_path:n #1
+  {
+    \ior_open:Nn \g__thesis_svg_ior {#1}
+    \ior_str_map_inline:Nn \g__thesis_svg_ior
+      {
+        \regex_extract_once:nnNT { ^\s*d="([^"]*)" } {##1} \l_tmpa_seq
+          {
+            % Rescan so letters and spaces get their usual catcodes for svg.path
+            \tl_gset_rescan:Nne \g__thesis_ornament_tl { } { \seq_item:Nn \l_tmpa_seq {2} }
+            \ior_map_break:
+          }
+      }
+    \ior_close:N \g__thesis_svg_ior
+  }
+\cs_new_protected:Npn \__thesis_fill_svg:n #1
+  { \fill[\MasterColor, yscale=-1, scale=1.00375] svg {#1}; } % svg.path reads pt, y up
+\cs_generate_variant:Nn \__thesis_fill_svg:n { V }
+\NewDocumentCommand{\LoadOrnament}{m}{ \thesis_load_svg_path:n {#1} }
+\NewDocumentCommand{\ornamentpicture}{}
+  {
+    \begin{tikzpicture}[x=1bp, y=-1bp]
+      \useasboundingbox (0,0) rectangle (634,453);
+      \__thesis_fill_svg:V \g__thesis_ornament_tl
+    \end{tikzpicture}
+  }
+\ExplSyntaxOff
+\LoadOrnament{figs/bee.svg}
+
+% Bee ornament centered in the chapter's rule
+\newcommand{\chapterornament}{%
+    \begin{adjustbox}{max height=0.5\baselineskip}%
+        \raisebox{-1.25\baselineskip}{\ornamentpicture}%
+    \end{adjustbox}%
+}
+
+% Horizontal rule with centered content
+\newcommand*\ruleline[1]{%
+    \par\noindent\raisebox{.25ex}{%
+        \makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-.8ex}{#1}\hspace{1ex}\hrulefill}%
+    }%
+}
+
+\titleformat{\chapter}[block]{
+    \Huge\color{\MasterColor}
+}{\centering\@chapapp~\thechapter\\}{0pt}{\centering\ruleline{\chapterornament}\\[4pt]\centering #1}
+
+\titleformat{\section}{
+    \vspace{0mm plus 2cm}\color{\MasterColor}\LARGE
+}{\thesection}{0.5em}{#1}
+
+\titleformat{\subsection}{
+    \Large\color{\MasterColor}
+}{\thesubsection}{0.5em}{#1}
+
+\titleformat{\subsubsection}{
+    \vspace{0pt plus 2pt}\large\color{\MasterColor}
+}{\thesubsubsection}{0.5em}{#1}
+
+% -----------------
+% Headers & Footers
+% -----------------
+\renewcommand{\chaptermark}[1]{\markboth{{\thechapter.~#1}}{}} % Chapter name in header
+\renewcommand{\sectionmark}[1]{} % No section name in header
+
+% --------------------------------------
+% Title Page shortcuts & French captions
+% --------------------------------------
+\newcommand{\Titre}[1]{\renewcommand{\Titre}{#1}}
+\newcommand{\Programme}[1]{\renewcommand{\Programme}{#1}}
+\newcommand{\Nom}[1]{\renewcommand{\Nom}{#1}}
+\newcommand{\Date}[1]{\renewcommand{\Date}{#1}}
+
+\addto\captionsfrench{\def\figurename{{\sc Figure}}}
+\addto\captionsfrench{\def\tablename{{\sc Tableau}}}
+\addto\captionsfrench{\def\listfigurename{Liste des figures}}
+\addto\captionsfrench{\renewcommand*\appendixname{Annexe}}

@@ -6,7 +6,7 @@ UniTeX is a collection of scientific oriented and minimalistic [LaTeX](https://w
 
 ![LaTeX](https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Overleaf](https://img.shields.io/badge/Overleaf-47A141?style=for-the-badge&logo=Overleaf&logoColor=white)
 
-![LICENSE](https://img.shields.io/github/license/BCarnaval/UniTeX?color=blue&style=for-the-badge) ![release](https://img.shields.io/github/v/tag/BCarnaval/Unitex?color=%23FF7F50&style=for-the-badge)
+![LICENSE](https://img.shields.io/github/license/antoinedelagrave/UniTeX?color=blue&style=for-the-badge) ![release](https://img.shields.io/github/v/tag/antoinedelagrave/Unitex?color=%23FF7F50&style=for-the-badge)
 
 </div>
 
@@ -28,9 +28,10 @@ The simplest way to use UniTeX's templates is by dowloading one from the links b
 
 |   Template   	|                                                                                                                    Description                                                                                                                    	| See template                                                                       	| Download link                                                                                                         	|
 |:------------:	|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:	|------------------------------------------------------------------------------------	|-----------------------------------------------------------------------------------------------------------------------	|
-|    Classic   	| Most likely suits longer document style such as lab and internship reports. 	| [See default](https://github.com/BCarnaval/UniTeX/blob/main/Classic/main.pdf)      	| [Get classic](https://downgit.evecalm.com/#/home?url=https://github.com/BCarnaval/UniTeX/tree/main/Classic)           	|
-|  Assignment  	| Useful for homework assignments or projects that needs clear split between uncorrelated sections.                                            	| [See default](https://github.com/BCarnaval/UniTeX/blob/main/Assignment/main.pdf)     	| [Get assignment](https://downgit.evecalm.com/#/home?url=https://github.com/BCarnaval/UniTeX/tree/main/Assignment)         	|
-| Presentation 	| Beamer presentation style. Very minimalistic.                                                                                                                                                                                                     	| [See default](https://github.com/BCarnaval/UniTeX/blob/main/Presentation/main.pdf) 	| [Get presentation](https://downgit.evecalm.com/#/home?url=https://github.com/BCarnaval/UniTeX/tree/main/Presentation) 	|
+|    Classic   	| Most likely suits longer document style such as lab and internship reports. 	| [See default](https://github.com/antoinedelagrave/UniTeX/blob/main/Classic/main.pdf)      	| [Get classic](https://downgit.evecalm.com/#/home?url=https://github.com/antoinedelagrave/UniTeX/tree/main/Classic)           	|
+|  Assignment  	| Useful for homework assignments or projects that needs clear split between uncorrelated sections.                                            	| [See default](https://github.com/antoinedelagrave/UniTeX/blob/main/Assignment/main.pdf)     	| [Get assignment](https://downgit.evecalm.com/#/home?url=https://github.com/antoinedelagrave/UniTeX/tree/main/Assignment)         	|
+| Presentation 	| Beamer presentation style. Very minimalistic.                                                                                                                                                                                                     	| [See default](https://github.com/antoinedelagrave/UniTeX/blob/main/Presentation/main.pdf) 	| [Get presentation](https://downgit.evecalm.com/#/home?url=https://github.com/antoinedelagrave/UniTeX/tree/main/Presentation) 	|
+|    Thesis    	| Master's thesis (mémoire) for UQTR: front pages, chapters, appendices, PDF/A output. 	| [See default](https://github.com/antoinedelagrave/UniTeX/blob/main/Thesis/main.pdf)      	| [Get thesis](https://downgit.evecalm.com/#/home?url=https://github.com/antoinedelagrave/UniTeX/tree/main/Thesis)           	|
 |    RevTeX    	| Two columns LaTeX template for non-official article style.                                                                                                                                                                                        	| WIP                                                                                	| WIP                                                                                                                   	|
 
 </div>
@@ -45,14 +46,14 @@ Every template folder contains a `main.tex` file in which are inputed configurat
 
 ### Classic
 
-- `main.tex`: use this file to change the color of the document details by changing the value of `MasterColor` variable for one listed in [colors.sty](https://github.com/BCarnaval/UniTeX/blob/main/Classic/colors.sty). Title page variables are also at the beginning of this file.
+- `main.tex`: use this file to change the color of the document details by changing the value of `MasterColor` variable for one listed in [colors.sty](https://github.com/antoinedelagrave/UniTeX/blob/main/Classic/colors.sty). Title page variables are also at the beginning of this file.
 - `colors.sty`: use this file to choose a color for you document! If you want a color that is not listed in the file, add it by yourself using the same format.
 - `style.sty`: This is where all the modules are imported and briefly commented. Then, the style is defined (TOC setting, headers, references, dimensions, titles and etc.).
 - `commands.sty`: This is the place to defined your own commands. I put some for math & physics as well as the custom colored boxes.
 
 ### Assignment
 
-- `main.tex`: use this file to change the color of the document details by changing the value of `MasterColor` and `MinorColor` (lighter than principal color for the filling of the section box) variables for one listed in [colors.sty](https://github.com/BCarnaval/UniTeX/blob/main/Assignment/colors.sty). Title page variables are also at the beginning of this file.
+- `main.tex`: use this file to change the color of the document details by changing the value of `MasterColor` and `MinorColor` (lighter than principal color for the filling of the section box) variables for one listed in [colors.sty](https://github.com/antoinedelagrave/UniTeX/blob/main/Assignment/colors.sty). Title page variables are also at the beginning of this file.
 - `colors.sty`: use this file to choose a color for you document! If you want a color that is not listed in the file, add it by yourself using the same format.
 - `style.sty`: This is where all the modules are imported and briefly commented. Then, the style is defined (TOC setting, headers, references, dimensions, titles and etc.).
 - `commands.sty`: This is the place to defined your own commands. I put some for math & physics as well as the custom colored boxes.
@@ -60,6 +61,20 @@ Every template folder contains a `main.tex` file in which are inputed configurat
 ### Presentation
 
 - `premable.sty`: Beamer theme and color are defined here. Same for used modules and style settings. I regrouped all of the configuration files in one because of the simplicity of the project.
+
+### Thesis
+
+Built from my master's thesis (UQTR, 2026), itself based on David Sénéchal's thesis model (Université de Sherbrooke, 2013). The example chapters are short excerpts of it: replace them with your own.
+
+- `main.tex`: use this file to change the color of the document details by changing the value of `MasterColor` variable for one listed in [colors.sty](https://github.com/antoinedelagrave/UniTeX/blob/main/Thesis/colors.sty). Title page variables are also at the beginning of this file. The order of the front matter (direction, dedication, acknowledgements, abstract, tables, publications) is set here too; delete the blocks you don't need. For a printed (two-sided) version, swap the two `\documentclass` lines.
+- `colors.sty`: use this file to choose a color for you document! If you want a color that is not listed in the file, add it by yourself using the same format.
+- `style.sty`: This is where all the modules are imported and briefly commented. Then, the style is defined (references, dimensions, titles, headers and the bibliography style). The bee between the chapter number and title is read from `figs/bee.svg` and filled with `MasterColor`.
+- `commands.sty`: This is the place to defined your own commands. I put some for math & physics, the colored `\boxed` equations and the `\insertfig{...}` / `\inserttable{...}` placeholders for figures still to come.
+- `main.xmpdata`: title, author and keywords of the PDF metadata. `pdfx` makes the output PDF/A-2b, the archival format usually required for the thesis deposit.
+- `sections/direction.tex`: research supervisors and jury.
+- `sections/annexes.tex`: appendices. The last one includes a published article with `\includepdf`: replace `figs/2509.07931v2.pdf` by your article's PDF.
+
+The front pages follow UQTR's format; other universities only need to adapt `TitlePage.tex` and `sections/direction.tex`. For an English thesis, use `\Language{english}` in `main.tex`, the `nature` bibliography style instead of `nature-fr` in `style.sty` and translate the front pages. Your program's deposit rules take precedence over this template.
 
 ### RevTeX
 
@@ -90,4 +105,5 @@ at the root of a template will start a continuous compilation with `latexmk` and
 - [x] 'Homework' template (Overleaf's rebuild)
 - [ ] 'RevTeX' template
 - [x] 'Presentation' template from Beamer
+- [x] 'Thesis' template (UQTR master's thesis)
 - [ ] Rework CLI (make it robust and clean to install)

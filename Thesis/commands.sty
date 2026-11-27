@@ -1,0 +1,160 @@
+% ---------------------
+% USER DEFINED COMMANDS
+% ---------------------
+\ProvidesPackage{commands}[2026/11/26]
+
+% --------------
+% Math & Physics
+% --------------
+% Better epsilon (swaps \epsilon and \varepsilon)
+\let\oldepsilon\epsilon
+\let\epsilon\varepsilon
+\let\varepsilon\oldepsilon
+
+% Big O notation for algorithms
+\newcommand{\bigO}{\mathscr{O}}
+
+% Blacksquare math proof env.
+\renewcommand{\qedsymbol}{\hfill\rule{0.7em}{0.7em}}
+
+% Partial derivative shortcut
+\newcommand{\pd}{\partial}
+
+% Space between equations in math environnement
+\newcommand{\betspace}{\hspace{0.5cm}\text{et}\hspace{0.5cm}}
+
+% Add text at the end of an equation in math env.
+\newcommand{\eqtext}[1]{,\hspace{1cm}\text{#1 }}
+
+% Styled Lagrangian
+\newcommand{\Lagr}{\mathcal{L}}
+
+% Basis vector notation
+\newcommand{\basis}[1]{\mathbf{\hat{#1}}}
+
+% Nothing else matter
+\newcommand{\washer}{\oslash}
+
+% Mean notation
+\newcommand{\mean}[1]{\left\langle #1\right\rangle}
+
+% Levi-civita tensor
+\newcommand{\levici}{\varepsilon_{ijk}}
+
+% Vectorial subspace epsilon
+\newcommand{\subspace}{\mathcal{E}}
+
+% Add space and comma between equations
+\newcommand{\beq}{,\hspace{0.5cm}}
+
+% Correct braket notation
+\renewcommand{\ket}[1]{|{#1}\rangle}
+\renewcommand{\bra}[1]{\langle{#1}|}
+\renewcommand{\braket}[2]{\langle{#1}|{#2}\rangle}
+
+% Complete set quantum mechanics
+\newcommand{\compset}[1]{\ket{#1}\bra{#1}}
+
+% Vectors upright convention
+\renewcommand{\bm}[1]{\mathbf{#1}}
+
+% Identity operator
+\newcommand{\identity}{\mathds{1}}
+
+% Creation/annihilation operators
+\newcommand{\create}[1]{c_{#1}^\dagger}
+\newcommand{\destroy}[1]{c_{#1}}
+\newcommand{\num}[1]{n_{#1}}
+
+% -------------
+% Colored Boxes
+% -------------
+\newtcolorbox{mybox}{
+  sharp corners, tcbox width=auto limited, math upper, capture=hbox, on line,
+  colback=white, colframe=\MasterColor,arc=0pt, boxrule=1pt
+}
+
+% Classic colored boxes
+\renewcommand{\boxed}[1]{
+    \begin{mybox}
+        #1
+    \end{mybox}
+}
+
+% Default settings for all boxes
+\tcbset{
+    on line,
+    boxsep=4pt, left=0pt,right=0pt,top=0pt,bottom=0pt,
+    colframe=white, highlight math style={enhanced}
+}
+
+% ---------------
+% Document layout
+% ---------------
+% Manual equation labeling
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% Indent answers paragraph
+\newcommand{\fullindent}{\setlength{\leftskip}{0.5cm}\noindent}
+
+% Noindent answers paragraph (where 'rindent' stands for remove indent)
+\newcommand{\rindent}{\setlength{\leftskip}{0cm}\noindent}
+
+% Roman numbers
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+% Full colored references
+\newcommand*{\fullref}[1]{\hyperref[{#1}]{\textit{\ref*{#1} \nameref*{#1}}}}
+
+% Placeholder for a figure to come
+\newcommand{\insertfig}[1]{
+    \begin{center}
+        \boxed{\textcolor{\MasterColor}{\texttt{\bfseries{FIGURE #1}}}}
+    \end{center}
+}
+
+% Placeholder for a table to come
+\newcommand{\inserttable}[1]{
+    \begin{center}
+        \boxed{\textcolor{\MasterColor}{\texttt{\bfseries{TABLEAU #1}}}}
+    \end{center}
+}
+
+% Dummy figure (caption, label)
+\newcommand{\dummyfig}[2]{
+    \begin{figure}[h!]
+        \begin{center}
+            \includegraphics[width=0.25\textwidth]{example-image}
+        \end{center}
+        \caption{#1}\label{fig: #2}
+    \end{figure}
+}
+
+% Multiple references in parentheses: \mref{eq: a, eq: b} -> (1.1, 1.2)
+\ExplSyntaxOn
+\NewDocumentCommand{\mref}{m}{\quinn_mref:n {#1}}
+\seq_new:N \l_quinn_mref_seq
+\cs_new:Npn \quinn_mref:n #1
+ {
+  \seq_set_split:Nnn \l_quinn_mref_seq { , } { #1 }
+  \seq_pop_right:NN \l_quinn_mref_seq \l_tmpa_tl
+  ( % print the left parenthesis
+  \seq_map_inline:Nn \l_quinn_mref_seq
+    { \ref{##1},\nobreakspace } % print the first references
+  \exp_args:NV \ref \l_tmpa_tl % print the last or only one
+  ) % print the right parenthesis
+ }
+\ExplSyntaxOff
+
+% Margin note
+\newcommand{\mnote}[1]{%
+    \tikz[remember picture,overlay]%
+    \node[red!50!black,font=\scriptsize\sffamily,anchor=west]%
+    at ([xshift=1em]0,0) {#1};%
+}
+
+% -------------------------
+% Project specific commands
+% -------------------------
+% Text under a brace
+\newcommand{\undertext}[2] {$\underbrace{\textrm{#1}}_{\textrm{#2}}$}

@@ -1,0 +1,93 @@
+\documentclass[titlepage, oneside, letterpaper, 11pt]{book} % Electronic version
+% \documentclass[titlepage, twoside, letterpaper, openright, 12pt]{book} % Printed version
+\usepackage{colors,style,commands}
+
+\MasterColor  {mossgreen}
+\SetRefColor  {\MasterColor}
+
+% Title page variables (supervisors & jury in sections/direction.tex)
+\University   {Université du Québec à Trois-Rivières}
+\Titre        {Titre du mémoire}
+\Programme    {Maîtrise en discipline}
+\Nom          {Prénom Nom}
+\Date         {Mois année}
+
+\begin{document}
+
+    \Language{french}
+
+    \subfile{TitlePage}
+
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
+
+    \frontmatter
+
+    \subfile{sections/direction}
+
+    % Dedication (optional)
+    \newpage
+    \vglue 5cm
+    \begin{flushright}
+        \textit{À ...} \\
+    \end{flushright}
+
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
+
+    \chapter{Remerciements}
+    \markboth{Remerciements}{Remerciements}
+    \subfile{sections/remerciements}
+    \clearpage
+
+    \newpage
+    \addcontentsline{toc}{chapter}{Sommaire}\chapter*{Sommaire}
+    \subfile{sections/sommaire}
+
+    {
+        \setlength{\parskip}{0ex}
+        \tableofcontents
+        \clearpage
+        \listoffigures
+        \clearpage
+        % \listoftables % Uncomment if the thesis has several tables
+        % \clearpage
+    }
+
+    % Publications (optional)
+    \chapter{Publications}
+    \markboth{Publications}{Publications}
+    \begin{enumerate}[label={[\arabic*]}, leftmargin=2em]
+        \item A. de Lagrave, D. Sénéchal et M. Charlebois. Subbath cluster
+            dynamical mean-field theory. \textit{Phys. Rev. B} \textbf{113},
+            165127 (2026).
+            \href{http://dx.doi.org/10.1103/g5gl-sfk4}{doi:10.1103/g5gl-sfk4}.
+    \end{enumerate}
+    \clearpage
+
+    \mainmatter
+
+    \addcontentsline{toc}{chapter}{Introduction}
+    \chapter*{Introduction}
+    \markboth{Introduction}{Introduction}
+    \subfile{sections/introduction}
+
+    \subfile{sections/theorie}
+    \subfile{sections/methode}
+    \subfile{sections/resultats}
+
+    \addcontentsline{toc}{chapter}{Conclusion}\chapter*{Conclusion}
+    \markboth{Conclusion}{Conclusion}
+    \subfile{sections/conclusion}
+    \clearpage
+
+    \appendix
+    \subfile{sections/annexes}
+    \clearpage
+
+    \addcontentsline{toc}{chapter}{Bibliographie}
+    \bibliography{refs}
+
+\end{document}
